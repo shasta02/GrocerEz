@@ -46,6 +46,12 @@ def run_target(driver, user_product, user_zip):
 
         time.sleep(3)
 
+        target_pics = open('target_pics.txt', 'w')
+
+        pic_class = driver.find_elements_by_tag_name('source')
+        for image in pic_class:
+            target_pics.write(image.get_attribute('srcset'))
+
         if re.match(item, 'orange'):
             element = waiter.until(
                 cond.element_to_be_clickable((By.LINK_TEXT, "Clear filters")))
@@ -184,6 +190,7 @@ def run_wholefoods(driver, user_product, user_zip):
     element.click()
 
     wholefoods_ans = open('wholefoods_ans.txt', 'w', encoding='utf-8')
+    wholefoods_pics = open('wholefoods_pics.txt', 'w')
 
     for item in user_product:
 
@@ -191,6 +198,14 @@ def run_wholefoods(driver, user_product, user_zip):
         driver.get(url)
 
         time.sleep(2)
+
+        pic_class = driver.find_elements_by_class_name('LazyImage-Image--1HP-y')
+        count = 0
+        for image in pic_class:
+            if count > 1:
+                break
+            wholefoods_pics.write(image.get_attribute('style'))
+            count = count + 1
 
         file = open('wholefoods.txt', 'w', encoding='utf-8')
         element = driver.find_element_by_tag_name('body')
@@ -247,20 +262,16 @@ def run_amazon(driver, user_product, user_zip):
     element.click()
     driver.find_element_by_css_selector("#GLUXZipUpdateInput").send_keys(user_zip)
 
-    element = waiter.until(cond.element_to_be_clickable((By.CSS_SELECTOR, '#GLUXZipUpdate > span > '
-                                                                          'input')))
+    element = waiter.until(cond.element_to_be_clickable((By.ID, 'GLUXZipUpdate')))
     element.click()
 
-    element = waiter.until(cond.element_to_be_clickable((By.CSS_SELECTOR, '#GLUXZipUpdate > span > '
-                                                                          'input')))
+    element = waiter.until(cond.element_to_be_clickable((By.NAME, 'glowDoneButton')))
     element.click()
 
-    element = waiter.until(cond.element_to_be_clickable((By.XPATH, '/html/body/div[3]/div/div/div['
-                                                                   '2]/span/span')))
-    element.click()
     time.sleep(2)
 
     amazon_ans = open('amazon_ans.txt', 'w', encoding='utf-8')
+    amazon_pics = open('amazon_pics.txt', 'w')
 
     for item in user_product:
 
@@ -268,6 +279,15 @@ def run_amazon(driver, user_product, user_zip):
         driver.get(url)
 
         time.sleep(2)
+
+        pic_class = driver.find_elements_by_class_name('LazyImage-Image--1HP-y')
+        count = 0
+        for image in pic_class:
+            if count > 1:
+                break
+            print(image.get_attribute('style'))
+            amazon_pics.write(image.get_attribute('style'))
+            count = count + 1
 
         file = open('amazon.txt', 'w', encoding='utf-8')
         element = driver.find_element_by_tag_name('body')
@@ -295,7 +315,6 @@ def run_amazon(driver, user_product, user_zip):
                 amazon_ans.write(line)
                 needPrice = True
             elif count == 1 and line[0] == '$' and needPrice:
-                print(1, line)
                 currStr += line[:len(line) - 1] + "."
                 price = True
                 needPrice = False
@@ -311,6 +330,7 @@ def run_amazon(driver, user_product, user_zip):
         file2.close()
 
     amazon_ans.close()
+    amazon_pics.close()
 
     run_time = time.time() - init_time
     print("Amazon done in", run_time)
@@ -322,16 +342,16 @@ def run_all(user_product, user_zip):
     chrome_options = webdriver.ChromeOptions()
     prefs = {"profile.managed_default_content_settings.images": 2}
     chrome_options.add_experimental_option("prefs", prefs)
+
     driver = webdriver.Chrome(
-        executable_path=r'C:\Users\NARAVENK\Downloads\chromedriver_win32 (1)\chromedriver.exe',
-        chrome_options=chrome_options)
+        executable_path=r'C:\Users\NARAVENK\Downloads\chromedriver_win32 (1)\chromedriver.exe', chrome_options=chrome_options)
 
-    driver.maximize_window()
+    # driver.maximize_window()
 
-    run_target(driver, user_product, user_zip)
-    run_walmart(driver, user_product, user_zip)
+    # run_target(driver, user_product, user_zip)
+    # run_walmart(driver, user_product, user_zip)
     run_amazon(driver, user_product, user_zip)
-    run_wholefoods(driver, user_product, user_zip)
+    # run_wholefoods(driver, user_product, user_zip)
 
     driver.quit()
 
