@@ -12,8 +12,6 @@ from selenium.webdriver.support import expected_conditions as cond
 import threading
 from selenium.webdriver.chrome.options import Options
 
-final2 = ""
-
 
 def check_all_numbers(s):
     nums = "0123456789$ ,"
@@ -39,7 +37,7 @@ def run_target(driver, user_product, user_zip):
                                                                           "> div > div > button")))
     element.click()
 
-    target_ans = open('target_ans.txt', 'w', encoding='utf-8')
+    target_ans = open('target_ans.txt', 'w')
 
     for item in user_product:
 
@@ -48,7 +46,7 @@ def run_target(driver, user_product, user_zip):
 
         time.sleep(3)
 
-        target_pics = open('target_pics.txt', 'w', encoding='utf-8')
+        target_pics = open('target_pics.txt', 'w')
 
         pic_class = driver.find_elements_by_tag_name('source')
         for image in pic_class:
@@ -64,7 +62,7 @@ def run_target(driver, user_product, user_zip):
             element.click()
 
         el = driver.find_element_by_tag_name("body")
-        file = open('target.txt', 'w', encoding='utf-8')
+        file = open('target.txt', 'w')
 
         file.write(el.text)
 
@@ -73,7 +71,7 @@ def run_target(driver, user_product, user_zip):
         # driver.close()
         file.close()
 
-        file2 = open('target.txt', 'r', encoding='utf-8')
+        file2 = open('target.txt', 'r')
         count = 0
 
         max2 = 0
@@ -126,7 +124,7 @@ def run_walmart(driver, user_product, user_zip):
     element.send_keys(Keys.ENTER)
     time.sleep(2)
 
-    walmart_ans = open('walmart_ans.txt', 'w', encoding='utf-8')
+    walmart_ans = open('walmart_ans.txt', 'w')
 
     for item in user_product:
 
@@ -136,7 +134,7 @@ def run_walmart(driver, user_product, user_zip):
         time.sleep(2)
 
         el = driver.find_element_by_tag_name('body')
-        file = open('walmart.txt', 'w', encoding='utf-8')
+        file = open('walmart.txt', 'w')
 
         file.write(el.text)
 
@@ -145,7 +143,7 @@ def run_walmart(driver, user_product, user_zip):
         # driver.close()
         file.close()
 
-        file2 = open('walmart.txt', 'r', encoding='utf-8')
+        file2 = open('walmart.txt', 'r')
         count = 0
         max2 = 0
         priceCount = False
@@ -192,7 +190,7 @@ def run_wholefoods(driver, user_product, user_zip):
     element.click()
 
     wholefoods_ans = open('wholefoods_ans.txt', 'w', encoding='utf-8')
-    wholefoods_pics = open('wholefoods_pics.txt', 'w', encoding='utf-8')
+    wholefoods_pics = open('wholefoods_pics.txt', 'w')
 
     for item in user_product:
 
@@ -218,7 +216,7 @@ def run_wholefoods(driver, user_product, user_zip):
         # driver.close()
         file.close()
 
-        file2 = open('wholefoods.txt', 'r', encoding='utf-8')
+        file2 = open('wholefoods.txt', 'r')
 
         count = 0
         max2 = 0
@@ -273,7 +271,7 @@ def run_amazon(driver, user_product, user_zip):
     time.sleep(2)
 
     amazon_ans = open('amazon_ans.txt', 'w', encoding='utf-8')
-    amazon_pics = open('amazon_pics.txt', 'w', encoding='utf-8')
+    amazon_pics = open('amazon_pics.txt', 'w')
 
     for item in user_product:
 
@@ -300,7 +298,7 @@ def run_amazon(driver, user_product, user_zip):
         # driver.close()
         file.close()
 
-        file2 = open('amazon.txt', 'r', encoding='utf-8')
+        file2 = open('amazon.txt', 'r')
 
         count = 0
         nums = 0
@@ -350,11 +348,12 @@ def run_all(user_product, user_zip):
     # driver.maximize_window()
 
     #run_target(driver, user_product, user_zip)
-    run_walmart(driver, user_product, user_zip)
-    run_amazon(driver, user_product, user_zip)
+    #run_walmart(driver, user_product, user_zip)
+    #run_amazon(driver, user_product, user_zip)
     run_wholefoods(driver, user_product, user_zip)
 
     driver.quit()
+
     print("Total run time:", (time.time() - init_time_overall))
 
 
@@ -371,16 +370,35 @@ def getValue():
     z = request.form['zip']
     run_all([item1, item2, item3], z)
     final = ""
-    files = ['amazon_ans.txt', 'target_ans.txt', 'walmart_ans.txt', 'wholefoods_ans.txt']
-    stores = ['Amazon', 'Target', 'Walmart', 'Wholefoods']
-    for i in range(0, len(files)):
-        file = open(files[i], 'r', encoding='utf-8')
-        final += stores[i] + "\n"
-        for line in file:
-            final += line + "\n"
-    print(final)
-    return render_template('pass.html', f=final)
-
+    wf = open('wholefoods_ans.txt', 'r')
+    w = open('walmart_ans.txt', 'r')
+    t = open('target_ans.txt', 'r')
+    a = open('amazon_ans.txt', 'r')
+    output = render_template('pass.html',userItem1=item1,userItem2=item2,userItem3=item3,wholeFoodsItem1=wf.readline(),
+                             wholeFoodsPrice1=wf.readline(),wholeFoodsItem2=wf.readline(),wholeFoodsPrice2=wf.readline(),
+                             wholeFoodsItem3=wf.readline(),wholeFoodsPrice3=wf.readline(),wholeFoodsItem4=wf.readline(),
+                             wholeFoodsPrice4=wf.readline(),wholeFoodsItem5=wf.readline(),wholeFoodsPrice5=wf.readline(),
+                             wholeFoodsItem6=wf.readline(),wholeFoodsPrice6=wf.readline(),
+                             walmartItem1=w.readline(),
+                             walmartPrice1=w.readline(),walmartItem2=w.readline(),walmartPrice2=w.readline(),
+                             walmartItem3=w.readline(),walmartPrice3=w.readline(),walmartItem4=w.readline(),
+                             walmartPrice4=w.readline(),walmartItem5=w.readline(),walmartPrice5=w.readline(),
+                             walmartItem6=w.readline(),walmartPrice6=w.readline(),
+                             targetItem1=t.readline(),
+                             targetPrice1=t.readline(), targetItem2=t.readline(), targetPrice2=t.readline(),
+                             targetItem3=t.readline(), targetPrice3=t.readline(), targetItem4=t.readline(),
+                             targetPrice4=t.readline(), targetItem5=t.readline(), targetPrice5=t.readline(),
+                             targetItem6=t.readline(), targetPrice6=t.readline(),
+                             amazonItem1=a.readline(),
+                             amazonPrice1=a.readline(), amazonItem2=a.readline(), amazonPrice2=a.readline(),
+                             amazonItem3=a.readline(), amazonPrice3=a.readline(), amazonItem4=a.readline(),
+                             amazonPrice4=a.readline(), amazonItem5=a.readline(), amazonPrice5=a.readline(),
+                             amazonItem6=a.readline(), amazonPrice6=a.readline())
+    wf.close()
+    w.close()
+    t.close()
+    a.close()
+    return output
 
 if __name__ == '__main__':
     app.run(debug=True)
