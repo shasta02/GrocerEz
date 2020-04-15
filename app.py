@@ -12,6 +12,8 @@ from selenium.webdriver.support import expected_conditions as cond
 import threading
 from selenium.webdriver.chrome.options import Options
 
+final2 = ""
+
 
 def check_all_numbers(s):
     nums = "0123456789$ ,"
@@ -342,19 +344,17 @@ def run_all(user_product, user_zip):
     chrome_options = webdriver.ChromeOptions()
     prefs = {"profile.managed_default_content_settings.images": 2}
     chrome_options.add_experimental_option("prefs", prefs)
-
-    driver = webdriver.Chrome(
-        executable_path=r'C:\Users\NARAVENK\Downloads\chromedriver_win32 (1)\chromedriver.exe', chrome_options=chrome_options)
+    driver = webdriver.Chrome(executable_path=r'C:\Users\NARAVENK\Downloads\chromedriver_win32 (1)\chromedriver.exe',
+                              chrome_options=chrome_options)
 
     # driver.maximize_window()
 
-    # run_target(driver, user_product, user_zip)
+    #run_target(driver, user_product, user_zip)
     # run_walmart(driver, user_product, user_zip)
-    run_amazon(driver, user_product, user_zip)
-    # run_wholefoods(driver, user_product, user_zip)
+    # run_amazon(driver, user_product, user_zip)
+    run_wholefoods(driver, user_product, user_zip)
 
     driver.quit()
-
     print("Total run time:", (time.time() - init_time_overall))
 
 
@@ -377,8 +377,9 @@ def getValue():
         file = open(files[i], 'r')
         final += stores[i] + "\n"
         for line in file:
-            final = line + "\n"
-    return final
+            final += line + "\n"
+    print(final)
+    return render_template('pass.html', f=final)
 
 
 if __name__ == '__main__':

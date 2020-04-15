@@ -7,7 +7,6 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest, time, re
 
-
 class AppDynamicsJob(unittest.TestCase):
     def setUp(self):
         # AppDynamics will automatically override this web driver
