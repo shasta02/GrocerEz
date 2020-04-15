@@ -156,7 +156,10 @@ def run_walmart(driver, user_product, user_zip):
             if "Current Price" in line:
                 priceCount = True
             elif priceCount:
-                walmart_ans.write(line)
+                if "In-store purchase" in line:
+                    walmart_ans.write("Price not available\n")
+                else:
+                    walmart_ans.write(line)
                 max2 += 1
                 priceCount = False
             if re.match("Product Title", line):
@@ -220,19 +223,22 @@ def run_wholefoods(driver, user_product, user_zip):
 
         count = 0
         max2 = 0
+        price = False
         for line in file2:
             if line == '0 Results For:':
                 wholefoods_ans.write('no stock')
                 break
             elif "Get in-store pricing, sales and product info" in line:
                 break
-            elif count == 1 and line.upper() != line and line[0] != '$':
+            elif count == 1 and line.upper() != line and "$" not in line and "¢" not in line and "Valid" not in line:
                 wholefoods_ans.write(line)
+                price = True
             elif "Brand (A-Z)" in line:
                 count = 1
-            elif count == 1 and "$" in line:
+            elif count == 1 and ("$" in line or "¢" in line) and price:
                 wholefoods_ans.write(line)
                 max2 = max2 + 1
+                price = False
             if max2 == 2:
                 break
 
@@ -374,7 +380,7 @@ def getValue():
     w = open('walmart_ans.txt', 'r', encoding='utf-8')
     t = open('target_ans.txt', 'r', encoding='utf-8')
     a = open('amazon_ans.txt', 'r', encoding='utf-8')
-    output = render_template('pass.html', userItem1=item1, userItem2=item2, userItem3=item3,
+    output = render_template('passNew.html', userItem1=item1, userItem2=item2, userItem3=item3,
                              wholeFoodsItem1=wf.readline(),
                              wholeFoodsPrice1=wf.readline(), wholeFoodsItem2=wf.readline(),
                              wholeFoodsPrice2=wf.readline(),
