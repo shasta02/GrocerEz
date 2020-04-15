@@ -39,7 +39,7 @@ def run_target(driver, user_product, user_zip):
                                                                           "> div > div > button")))
     element.click()
 
-    target_ans = open('target_ans.txt', 'w')
+    target_ans = open('target_ans.txt', 'w', encoding='utf-8')
 
     for item in user_product:
 
@@ -48,7 +48,7 @@ def run_target(driver, user_product, user_zip):
 
         time.sleep(3)
 
-        target_pics = open('target_pics.txt', 'w')
+        target_pics = open('target_pics.txt', 'w', encoding='utf-8')
 
         pic_class = driver.find_elements_by_tag_name('source')
         for image in pic_class:
@@ -64,7 +64,7 @@ def run_target(driver, user_product, user_zip):
             element.click()
 
         el = driver.find_element_by_tag_name("body")
-        file = open('target.txt', 'w')
+        file = open('target.txt', 'w', encoding='utf-8')
 
         file.write(el.text)
 
@@ -73,7 +73,7 @@ def run_target(driver, user_product, user_zip):
         # driver.close()
         file.close()
 
-        file2 = open('target.txt', 'r')
+        file2 = open('target.txt', 'r', encoding='utf-8')
         count = 0
 
         max2 = 0
@@ -126,7 +126,7 @@ def run_walmart(driver, user_product, user_zip):
     element.send_keys(Keys.ENTER)
     time.sleep(2)
 
-    walmart_ans = open('walmart_ans.txt', 'w')
+    walmart_ans = open('walmart_ans.txt', 'w', encoding='utf-8')
 
     for item in user_product:
 
@@ -136,7 +136,7 @@ def run_walmart(driver, user_product, user_zip):
         time.sleep(2)
 
         el = driver.find_element_by_tag_name('body')
-        file = open('walmart.txt', 'w')
+        file = open('walmart.txt', 'w', encoding='utf-8')
 
         file.write(el.text)
 
@@ -145,7 +145,7 @@ def run_walmart(driver, user_product, user_zip):
         # driver.close()
         file.close()
 
-        file2 = open('walmart.txt', 'r')
+        file2 = open('walmart.txt', 'r', encoding='utf-8')
         count = 0
         max2 = 0
         priceCount = False
@@ -192,7 +192,7 @@ def run_wholefoods(driver, user_product, user_zip):
     element.click()
 
     wholefoods_ans = open('wholefoods_ans.txt', 'w', encoding='utf-8')
-    wholefoods_pics = open('wholefoods_pics.txt', 'w')
+    wholefoods_pics = open('wholefoods_pics.txt', 'w', encoding='utf-8')
 
     for item in user_product:
 
@@ -218,7 +218,7 @@ def run_wholefoods(driver, user_product, user_zip):
         # driver.close()
         file.close()
 
-        file2 = open('wholefoods.txt', 'r')
+        file2 = open('wholefoods.txt', 'r', encoding='utf-8')
 
         count = 0
         max2 = 0
@@ -273,7 +273,7 @@ def run_amazon(driver, user_product, user_zip):
     time.sleep(2)
 
     amazon_ans = open('amazon_ans.txt', 'w', encoding='utf-8')
-    amazon_pics = open('amazon_pics.txt', 'w')
+    amazon_pics = open('amazon_pics.txt', 'w', encoding='utf-8')
 
     for item in user_product:
 
@@ -300,7 +300,7 @@ def run_amazon(driver, user_product, user_zip):
         # driver.close()
         file.close()
 
-        file2 = open('amazon.txt', 'r')
+        file2 = open('amazon.txt', 'r', encoding='utf-8')
 
         count = 0
         nums = 0
@@ -350,8 +350,8 @@ def run_all(user_product, user_zip):
     # driver.maximize_window()
 
     #run_target(driver, user_product, user_zip)
-    # run_walmart(driver, user_product, user_zip)
-    # run_amazon(driver, user_product, user_zip)
+    run_walmart(driver, user_product, user_zip)
+    run_amazon(driver, user_product, user_zip)
     run_wholefoods(driver, user_product, user_zip)
 
     driver.quit()
@@ -374,7 +374,7 @@ def getValue():
     files = ['amazon_ans.txt', 'target_ans.txt', 'walmart_ans.txt', 'wholefoods_ans.txt']
     stores = ['Amazon', 'Target', 'Walmart', 'Wholefoods']
     for i in range(0, len(files)):
-        file = open(files[i], 'r')
+        file = open(files[i], 'r', encoding='utf-8')
         final += stores[i] + "\n"
         for line in file:
             final += line + "\n"
