@@ -135,6 +135,12 @@ Customer Rating
 & Up
 1 Stars
 & Up
+Grocery Pickup
+Grocery Pickup
+Packaged Salads
+Packaged Salads
+Lettuce Seeds
+Lettuce Seeds
 Search Product Result
 Product Image
 Product Title
@@ -208,8 +214,8 @@ In-store purchase only
 Product Image
 Product Title
 Marketside Classic Iceberg Salad, 12 oz
-Average rating:3.5out of5stars, based on410reviews
-410
+Average rating:3.5out of5stars, based on411reviews
+411
 ratings
 Current Price
 In-store purchase only
@@ -271,6 +277,14 @@ Sold & shipped by
 Seed Kingdom
 Product Image
 Product Title
+Marketside Classic Iceberg Salad, 24 oz
+Average rating:3out of5stars, based on74reviews
+74
+ratings
+Current Price
+In-store purchase only
+Product Image
+Product Title
 Green Giant Fresh Little Gem Lettuce Hearts 6 ct Bag
 Average rating:0out of5stars, based on0reviews
 Current Price
@@ -279,14 +293,6 @@ Product Image
 Product Title
 Green Giant Fresh Living Butter Lettuce, 1 Count
 Average rating:0out of5stars, based on0reviews
-Current Price
-In-store purchase only
-Product Image
-Product Title
-Marketside Classic Iceberg Salad, 24 oz
-Average rating:3out of5stars, based on74reviews
-74
-ratings
 Current Price
 In-store purchase only
 Product Image
@@ -440,22 +446,12 @@ $82.98
 $82.98
 Out of stock
 Related Searches
-tomatoesiceberg lettuceromaine lettuceshredded lettucehead of lettucelettuce headhead lettucebutter lettuce
+iceberg lettuceromaine lettucehead of lettucelettuce keepershredded lettuceiceburg lettucelettuce knifelettuce head
 1
 2
 3
 4
 Next Page
-Sponsored Products
-Lipton Soup Secrets with Real Chicken Flavor Extra Noodle Soup Mix, 4.9 oz 2 ct
-182
-$6.32
-$6.32
-Cheez-It Baked Snack Cheese Crackers, Jalapeno & Cheddar Jack, 12.4 Oz
-30
-$2.88
-$2.88
-2-day delivery
 Sign Up
 Mobile apps
 Walmart Services
@@ -497,5 +493,5 @@ Home Products
 Clothing
 Shop Our Brands
 © 2020 Walmart. All Rights Reserved.
-To ensure we are able to help you as best we can, please include your reference number: SHPLSMKZ0U
+To ensure we are able to help you as best we can, please include your reference number: YK4JQ406UT
 Feedback
