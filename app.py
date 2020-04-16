@@ -76,7 +76,7 @@ def run_target(driver, user_product, user_zip):
 
         max2 = 0
         for line in file2:
-            if count == 1 and not re.match("third party advertisement", line) and not re.match("sponsored", line):
+            if count == 1 and not re.match("third party advertisement", line) and not re.match("sponsored", line) and "Get it fast" not in line:
                 target_ans.write(line)
                 count = 0
             elif line[0] == '$':
@@ -351,7 +351,7 @@ def run_all(user_product, user_zip):
     driver = webdriver.Chrome(executable_path=r'C:\Users\NARAVENK\Downloads\chromedriver_win32 (1)\chromedriver.exe',
                               chrome_options=chrome_options)
 
-    # driver.maximize_window()
+    driver.maximize_window()
 
     run_target(driver, user_product, user_zip)
     run_walmart(driver, user_product, user_zip)
