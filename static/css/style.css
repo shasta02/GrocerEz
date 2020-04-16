@@ -7,7 +7,11 @@
 
 /*--------------------------------------------------------------
 # General
+
+
 --------------------------------------------------------------*/
+
+
 /** Table Code **/
 
 table {
@@ -16,7 +20,7 @@ border-collapse: collapse;
 
 table th {
     text-align:left;
-    background-color: #3a6070;
+    background-color: #1acc8d;
     color: #FFF;
     padding: 4px 30px 4px 8px;
 }
@@ -26,13 +30,13 @@ table td {
     padding: 4px 8px;
 }
 
-table tr: nth-child(odd) td {
+table tr:nth-child(odd) td {
     background-color: #e7edf0;
 }
 
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #444444;
 }
 
@@ -49,8 +53,9 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
+
 
 /*--------------------------------------------------------------
 # Preloader
@@ -674,7 +679,7 @@ section {
 }
 
 .about .video-box {
-  background: url("../img/about.png") center center no-repeat;
+  background: url("../img/gstore2.jpg") center center no-repeat;
   background-size: contain;
   min-height: 300px;
 }

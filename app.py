@@ -35,9 +35,15 @@ def run_target(driver, user_product, user_zip):
                                                                           ".h-padding-h-default > "
                                                                           "div:nth-child(1) > div "
                                                                           "> div > div > button")))
+
+    storeName = driver.find_element_by_xpath(
+        "/html/body/div[1]/div/div[4]/div[2]/div/div[2]/div[1]/div/div/span/a[1]").text
+
     element.click()
 
     target_ans = open('target_ans.txt', 'w', encoding='utf-8')
+
+    target_ans.write(storeName + "\n")
 
     for item in user_product:
 
@@ -73,16 +79,22 @@ def run_target(driver, user_product, user_zip):
 
         file2 = open('target.txt', 'r', encoding='utf-8')
         count = 0
+        start = False
 
         max2 = 0
         for line in file2:
-            if count == 1 and not re.match("third party advertisement", line) and not re.match("sponsored", line) and "Get it fast" not in line:
+            if count == 1 and ("all delivery options" in line or "include out of stock" in line):
+                print("Here")
+                count = 0
+            if count == 1 and not re.match("third party advertisement", line) and not re.match("sponsored", line) and \
+                    "Get it fast" not in line:
                 target_ans.write(line)
                 count = 0
-            elif line[0] == '$':
+                start = True
+            elif line[0] == '$' and start:
                 target_ans.write(line)
                 max2 += 1
-            elif re.match("Sort byRelevance", line):
+            elif "in stores" in line:
                 count = 1
             elif re.match("Add for delivery", line):
                 count = 1
@@ -190,9 +202,11 @@ def run_wholefoods(driver, user_product, user_zip):
     element = waiter.until(cond.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div/div['
                                                                    '1]/div[2]/div[2]/div[2]/div['
                                                                    '2]/div[1]/div[1]')))
+    storeName = element.text
     element.click()
 
     wholefoods_ans = open('wholefoods_ans.txt', 'w', encoding='utf-8')
+    wholefoods_ans.write(storeName + "\n")
     wholefoods_pics = open('wholefoods_pics.txt', 'w', encoding='utf-8')
 
     for item in user_product:
@@ -348,14 +362,15 @@ def run_all(user_product, user_zip):
     chrome_options = webdriver.ChromeOptions()
     prefs = {"profile.managed_default_content_settings.images": 2}
     chrome_options.add_experimental_option("prefs", prefs)
+    chrome_options.add_argument('headless')
     driver = webdriver.Chrome(executable_path=r'C:\Users\NARAVENK\Downloads\chromedriver_win32 (1)\chromedriver.exe',
                               chrome_options=chrome_options)
 
     driver.maximize_window()
 
-    run_target(driver, user_product, user_zip)
-    run_walmart(driver, user_product, user_zip)
-    run_amazon(driver, user_product, user_zip)
+    #run_target(driver, user_product, user_zip)
+    #run_walmart(driver, user_product, user_zip)
+    #run_amazon(driver, user_product, user_zip)
     run_wholefoods(driver, user_product, user_zip)
 
     driver.quit()
@@ -381,7 +396,10 @@ def getValue():
     t = open('target_ans.txt', 'r', encoding='utf-8')
     a = open('amazon_ans.txt', 'r', encoding='utf-8')
     output = render_template('passNew.html', userItem1=item1, userItem2=item2, userItem3=item3,
-                             wholeFoodsItem1=wf.readline(),
+                             wholeFoodsStore=wf.readline(),
+                             targetStore=t.readline(), wholeFoodsItem1=wf.readline(),
+                             walmartStore="In stores near " + z,
+                             amazonStore="Deliver to " + z,
                              wholeFoodsPrice1=wf.readline(), wholeFoodsItem2=wf.readline(),
                              wholeFoodsPrice2=wf.readline(),
                              wholeFoodsItem3=wf.readline(), wholeFoodsPrice3=wf.readline(),
