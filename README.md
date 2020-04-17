@@ -8,6 +8,6 @@ The Corona virus has taken the world by storm and changed our entire lifestyle. 
 
 
 Created By:
-@shasta02
-@amayzing24
+@shasta02,
+@amayzing24,
 @adarshpkamath
