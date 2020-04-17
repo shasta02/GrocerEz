@@ -25,6 +25,7 @@ table th {
     padding: 4px 30px 4px 8px;
 }
 
+
 table td {
     border: 1px solid #e3e3e3;
     padding: 4px 8px;
@@ -679,9 +680,14 @@ section {
 }
 
 .about .video-box {
-  background: url("../img/gstore2.jpg") center center no-repeat;
+  background: url("../img/storenew.jpg") center center no-repeat;
   background-size: contain;
-  min-height: 300px;
+  min-height: 200px;
+}
+.about img {
+    max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
 }
 
 .about .play-btn {
