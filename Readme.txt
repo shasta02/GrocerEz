@@ -1,4 +1,4 @@
-GrocerEz:
+#GrocerEz:
 
 Many stores simply do not have every grocery you need, and that is why we created GrocerEz. GrocerEz allows you to input your grocery list and see the availability of your desired items at local retail stores and ordering services.
 
