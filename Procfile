@@ -1,1 +1,1 @@
-web: Flask app:app --timeout 45 --keep-alive 5 --log-level debug
+web: Flask app:app --keep-alive 5 --log-level debug
