@@ -1,1 +1,1 @@
-web: Flask app:app
+web: Flask app:app --timeout 120
