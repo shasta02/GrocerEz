@@ -380,7 +380,7 @@ def run_all(user_product, user_zip):
     driver.maximize_window()
 
     run_target(driver, user_product, user_zip)
-    run_walmart(driver, user_product, user_zip)
+    #run_walmart(driver, user_product, user_zip)
     run_amazon(driver, user_product, user_zip)
     run_wholefoods(driver, user_product, user_zip)
 
