@@ -1,5 +1,6 @@
 # GrocerEz
 
+Pitch Link: https://www.youtube.com/watch?v=q_Sd6G4KULY&feature=youtu.be
 Many stores simply do not have every grocery you need, and that is why we created GrocerEz. GrocerEz allows you to input your grocery list and see the availability of your desired items at local retail stores and ordering services.
 
 In this project, we used python for the backend, Selenium for web automation, html, css and javascript for the front end, and Flask to connect it all together.
