@@ -10,6 +10,6 @@ The Corona virus has taken the world by storm and changed our entire lifestyle. 
 
 
 Created By:
-@shasta02,
-[@amayzing24](https://github.com/Amayzing24) ,
-@adarshpkamath
+[@shasta02](https://github.com/shasta02),
+[@amayzing24](https://github.com/Amayzing24),
+[@adarshpkamath](https://github.com/adarshpkamath)
