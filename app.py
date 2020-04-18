@@ -11,6 +11,8 @@ import time, re
 from selenium.webdriver.support import expected_conditions as cond
 import threading
 from selenium.webdriver.chrome.options import Options
+import os
+
 
 
 def check_all_numbers(s):
@@ -362,15 +364,24 @@ def run_all(user_product, user_zip):
     chrome_options = webdriver.ChromeOptions()
     prefs = {"profile.managed_default_content_settings.images": 2}
     chrome_options.add_experimental_option("prefs", prefs)
-    chrome_options.add_argument('headless')
-    driver = webdriver.Chrome(executable_path=r'C:\Users\NARAVENK\Downloads\chromedriver_win32 (1)\chromedriver.exe',
-                              chrome_options=chrome_options)
+    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--no-sandbox")
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+
+    #chrome_options = webdriver.ChromeOptions()
+    #prefs = {"profile.managed_default_content_settings.images": 2}
+    #chrome_options.add_experimental_option("prefs", prefs)
+    #chrome_options.add_argument('headless')
+    #driver = webdriver.Chrome(executable_path=r'C:\Users\NARAVENK\Downloads\chromedriver_win32 (1)\chromedriver.exe',
+                           #   chrome_options=chrome_options)
 
     driver.maximize_window()
 
-    #run_target(driver, user_product, user_zip)
-    #run_walmart(driver, user_product, user_zip)
-    #run_amazon(driver, user_product, user_zip)
+    run_target(driver, user_product, user_zip)
+    run_walmart(driver, user_product, user_zip)
+    run_amazon(driver, user_product, user_zip)
     run_wholefoods(driver, user_product, user_zip)
 
     driver.quit()
