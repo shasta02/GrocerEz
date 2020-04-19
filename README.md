@@ -18,7 +18,7 @@ The Corona virus has taken the world by storm and changed our entire lifestyle. 
 driver = webdriver.Chrome(executable_path=r'C:\PATH_TO_CHROME_DRIVER', chrome_options=chrome_options)
 7. Run the app.py file
 8. Open http://127.0.0.1:5000/ in your browser
-9. Enter your grocery items/zip code and click submit
+9. Enter your grocery items/zip code and click submit (Based on your internet speed and computing power it will take 30sec-2min to finish running)
 
 Created By:
 [@shasta02](https://github.com/shasta02),
