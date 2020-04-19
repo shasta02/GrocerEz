@@ -14,7 +14,8 @@ The Corona virus has taken the world by storm and changed our entire lifestyle. 
 3. Run npm install Selenium in PyCharm terminal 
 4. Run npm install Flask in PyCharm terminal
 2. Install and run [Chrome driver](https://chromedriver.chromium.org/downloads)
-3. Open the app.py file and set chrome driver path to where your chrome driver was downloaded
+3. Open the app.py file and edit chrome driver path to where your chrome driver was downloaded (driver = webdriver.Chrome(executable_path=r'C:\PATH_TO_CHROME_DRIVER',
+                              chrome_options=chrome_options)
 4. Run the app.py file
 5. Open http://127.0.0.1:5000/ in your browser
 
