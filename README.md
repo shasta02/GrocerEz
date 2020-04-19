@@ -10,6 +10,9 @@ The Corona virus has taken the world by storm and changed our entire lifestyle. 
 
 #Steps to Use GrocerEz:
 1. Clone repo
+2. Open repo in [PyCharm](https://www.jetbrains.com/pycharm/download/) (Make sure you have Python 3.7 or higher installed)
+3. Run npm install Selenium in PyCharm terminal 
+4. Run npm install Flask in PyCharm terminal
 2. Install and run [Chrome driver](https://chromedriver.chromium.org/downloads)
 3. Open the app.py file and set chrome driver path to where your chrome driver was downloaded
 4. Run the app.py file
