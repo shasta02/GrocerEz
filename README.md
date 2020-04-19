@@ -8,7 +8,7 @@ In this project, we used python for the backend, Selenium for web automation, ht
 
 The Corona virus has taken the world by storm and changed our entire lifestyle. GrocerEz aims to provide some support not only in these difficult times, but for the future as well. Remember, find your groceries with GrocerEz!
 
-#Steps to Use GrocerEz:
+# Steps to Use GrocerEz:
 1. Clone repo
 2. Open repo in [PyCharm](https://www.jetbrains.com/pycharm/download/) (Make sure you have Python 3.7 or higher installed)
 3. Run npm install Selenium in PyCharm terminal 
