@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as cond
 import threading
 from selenium.webdriver.chrome.options import Options
 
-
+ 
 def check_all_numbers(s):
     nums = "0123456789$ ,"
     for c in s:
