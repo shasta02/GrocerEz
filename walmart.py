@@ -26,7 +26,7 @@ class AppDynamicsJob(unittest.TestCase):
         driver = self.driver
         #driver.maximize_window()
         time.sleep(2)
-        driver.get("https://www.walmart.com/")
+        driver.get("https://www.walmart.com/" )
         time.sleep(5)
         driver.find_element_by_xpath("//div[6]/div/div[3]/button").click()
         time.sleep(1)
